@@ -1,6 +1,9 @@
 package net1;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -23,7 +26,17 @@ public class Server1 {
 		
 		InetAddress inetAddress = socket.getInetAddress();
 		System.out.println("접속을 요청한 클라이언트 ip:  "+ inetAddress.getHostAddress());
-
+		
+		// 클라이언트측 소켓과 연결된 스트림객체 생성하기
+		BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+		PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
+		
+		// 클라이언트가 보낸 메세지 수신하기
+		String name = reader.readLine();
+		System.out.println("접속한 사용자명: " + name);
+		
+		// 클라이언트에게 메세지 보내기
+		writer.println(name + "님 반갑습니다.");
 	}
 
 }
