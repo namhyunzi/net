@@ -24,7 +24,7 @@ public class Client {
 		 */
 		map.put(Cmd.MENU_LIST, new ClientFileListHandler());
 		map.put(Cmd.MENU_DOWNLOAD, new ClientFileDownloadHandler(scanner));
-		map.put(Cmd.MENU_UPLOAD, new ClientFileUploadHandler());
+		map.put(Cmd.MENU_UPLOAD, new ClientFileUploadHandler(scanner));
 		map.put(Cmd.MENU_EXIT, new ClientExitHandler());
 		
 	}
